@@ -9,18 +9,20 @@ class MyHomepage extends StatelessWidget {
         appBar: AppBar(
           title: Text("Budget App"),
         ),
-        body: Column(
-          //  mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Card(
-                child: Text("STATS!"),
+        body: SingleChildScrollView(
+          child: Column(
+            //  mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                child: Card(
+                  child: Text("STATS!"),
+                ),
               ),
-            ),
-            TransactionUser(),
-          ],
+              TransactionUser(),
+            ],
+          ),
         ));
   }
 }

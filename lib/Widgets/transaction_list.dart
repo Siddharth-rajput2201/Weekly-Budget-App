@@ -9,37 +9,42 @@ class TransactionList extends StatelessWidget {
   TransactionList(this.transactions);
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: transactions.map((tr) {
-      return Card(
-          child: Row(
-        children: <Widget>[
-          Container(
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.green, width: 2)),
-              child: Text(
-                '₹ ' + "${tr.amount}",
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
-              )),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Text(
-                tr.title,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-              ),
-              Text(
-                DateFormat().format(tr.date),
-                style: TextStyle(color: Colors.grey[500]),
-              ),
-            ],
-          )
-        ],
-      ));
-    }).toList());
+    return Container(
+      height: 300,
+      child: ListView.builder(
+        itemBuilder: (ctx , index){
+         return Card(
+              child: Row(
+                children: <Widget>[
+                  Container(
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.green, width: 2)),
+                      child: Text(
+                        '₹ ' + "${transactions[index].amount}",
+                        style:
+                        TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
+                      )),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Text(
+                        transactions[index].title,
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                      ),
+                      Text(
+                        DateFormat().format(transactions[index].date),
+                        style: TextStyle(color: Colors.grey[500]),
+                      ),
+                    ],
+                  )
+                ],
+              ));
+        },
+        itemCount: transactions.length,
+      ),
+    );
   }
 }

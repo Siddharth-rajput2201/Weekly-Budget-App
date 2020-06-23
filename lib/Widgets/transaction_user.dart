@@ -17,7 +17,7 @@ class _TransactionUserState extends State<TransactionUser> {
     Transaction(id: "T1", amount: 20, date: DateTime.now(), title: "T Shirt"),
   ];
 
-  void _addtransaction(String trtitle, double tramount , ){
+  void _addtransaction(String trtitle, double tramount ){
 
     final newtr = Transaction(id: DateTime.now().toString(), amount: tramount, date: DateTime.now(), title: trtitle);
 
