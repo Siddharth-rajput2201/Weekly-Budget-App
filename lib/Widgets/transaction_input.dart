@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
-class TransactionInput extends StatelessWidget {
+class TransactionInput extends StatefulWidget {
 
-  final titlecontroller = TextEditingController();
-  final amountcontroller = TextEditingController();
   final Function addtr;
 
   TransactionInput(this.addtr);
+
+  @override
+  _TransactionInputState createState() => _TransactionInputState();
+}
+
+class _TransactionInputState extends State<TransactionInput> {
+  final titlecontroller = TextEditingController();
+
+  final amountcontroller = TextEditingController();
 
   void submit(){
     final enteredtitle = titlecontroller.text;
@@ -18,7 +25,9 @@ class TransactionInput extends StatelessWidget {
         return;
       }
 
-    print(addtr(enteredtitle, enteredamount));
+    print(widget.addtr(enteredtitle, enteredamount));
+
+    Navigator.of(context).pop();
   }
 
   @override
