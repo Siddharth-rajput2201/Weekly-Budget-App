@@ -10,15 +10,15 @@ class TransactionInput extends StatelessWidget {
   TransactionInput(this.addtr);
 
   void submit(){
-    final entered_title = titlecontroller.text;
-    final entered_amount = double.parse(amountcontroller.text);
+    final enteredtitle = titlecontroller.text;
+    final enteredamount = double.parse(amountcontroller.text);
 
-    if(entered_title.isEmpty || entered_amount <= 0)
+    if(enteredtitle.isEmpty || enteredamount <= 0)
       {
         return;
       }
 
-    print(addtr(entered_title, entered_amount));
+    print(addtr(enteredtitle, enteredamount));
   }
 
   @override

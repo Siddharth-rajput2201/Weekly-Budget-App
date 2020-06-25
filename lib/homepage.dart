@@ -8,6 +8,9 @@ class MyHomepage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text("Budget App"),
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.add_circle,color: Colors.white,), onPressed: null)
+          ],
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -23,6 +26,9 @@ class MyHomepage extends StatelessWidget {
               TransactionUser(),
             ],
           ),
-        ));
+        ),
+      //floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(child: Icon(Icons.add),onPressed: (){},),
+    );
   }
 }
