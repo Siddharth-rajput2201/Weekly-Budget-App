@@ -1,3 +1,4 @@
+import 'package:budgetapp/Widgets/chart.dart';
 import 'package:budgetapp/Widgets/transaction_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -13,6 +14,12 @@ class MyHomepage extends StatefulWidget {
 class _MyHomepageState extends State<MyHomepage> {
 
   final List<Transaction> _usertransactions = [];
+
+  List<Transaction> get _recentTransactions{
+      return _usertransactions.where((tx) {
+        return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+      }).toList();
+  }
 
   void _addtransaction(String trtitle, double tramount ){
 
@@ -48,12 +55,7 @@ class _MyHomepageState extends State<MyHomepage> {
             //  mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Container(
-                width: double.infinity,
-                child: Card(
-                  child: Text("STATS!"),
-                ),
-              ),
+              Chart(_recentTransactions),
               TransactionList(_usertransactions),
             ],
           ),
