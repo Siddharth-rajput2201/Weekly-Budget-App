@@ -20,7 +20,7 @@ class Chart extends StatelessWidget {
               recentTransaction[i].date.month == weekday.month )
             {
 
-                print(DateFormat.E().format(weekday));
+                print(DateFormat.E().format(weekday).substring(0,1));
                 print(totalsum);
                 return{
                   'day' : DateFormat.E().format(weekday),
@@ -38,9 +38,9 @@ class Chart extends StatelessWidget {
       elevation: 10,
       margin: EdgeInsets.all(25),
       child: Row(
-        children: <Widget>[
-
-        ],
+        children: groupedTransaction.map((data) {
+          return Text('${data['day']}: ${data['amount']}');
+        }).toList(),
       ),
     );
   }
