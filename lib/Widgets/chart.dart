@@ -11,7 +11,7 @@ class Chart extends StatelessWidget {
   List<Map<String,Object>>get groupedTransaction{
     return List.generate(7, (index) {
       final weekday = DateTime.now().subtract(Duration(days:index),);
-      double totalsum;
+      var totalsum = 0.0;
 
       for(var i = 0; i <recentTransaction.length ; i++)
         {
@@ -19,16 +19,15 @@ class Chart extends StatelessWidget {
               recentTransaction[i].date.month == weekday.month &&
               recentTransaction[i].date.month == weekday.month )
             {
-
-                print(DateFormat.E().format(weekday).substring(0,1));
-                print(totalsum);
-                return{
-                  'day' : DateFormat.E().format(weekday),
-                  'amount': totalsum,
-                };
+                totalsum += recentTransaction[i].amount;
             }
         }
-      return {'DAY': DateFormat.E(weekday),'AMOUNT': 9.99 };});
+      return{
+        'day' : DateFormat.E().format(weekday),
+        'amount': totalsum,
+      };
+      });
+      //return {'DAY': DateFormat.E(weekday),'AMOUNT': 9.99 };});
   }
 
   @override
