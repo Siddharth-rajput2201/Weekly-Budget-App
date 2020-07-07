@@ -1,4 +1,5 @@
 import 'package:budgetapp/Data_models/trasanction_class.dart';
+import 'package:budgetapp/Widgets/bars.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -23,11 +24,17 @@ class Chart extends StatelessWidget {
             }
         }
       return{
-        'day' : DateFormat.E().format(weekday),
+        'day' : DateFormat.E().format(weekday).substring(0,1),
         'amount': totalsum,
       };
       });
       //return {'DAY': DateFormat.E(weekday),'AMOUNT': 9.99 };});
+  }
+
+  double get totalspending{
+    return groupedTransaction.fold(0.0, (sum, item) {
+      return  sum + item['amount'];
+    });
   }
 
   @override
@@ -38,7 +45,8 @@ class Chart extends StatelessWidget {
       margin: EdgeInsets.all(25),
       child: Row(
         children: groupedTransaction.map((data) {
-          return Text('${data['day']}: ${data['amount']}');
+          return Bar(data['day'], data['amount'],
+              totalspending == 0.0 ? 0.0 : (data['amount'] as double) / totalspending );
         }).toList(),
       ),
     );
