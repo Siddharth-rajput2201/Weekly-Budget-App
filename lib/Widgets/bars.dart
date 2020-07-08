@@ -11,7 +11,7 @@ class Bar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("\₹${spendingamount.toStringAsFixed(0)}"),
+        FittedBox(child: Text("\₹${spendingamount.toStringAsFixed(0)}")),
         SizedBox(
           height: 4,
         ),
@@ -30,6 +30,7 @@ class Bar extends StatelessWidget {
                 heightFactor: spendingPCToftotal,
                 child: Container(
                   decoration: BoxDecoration(
+                    color: Colors.blue,
                       borderRadius: BorderRadius.circular(10)),
                 ),
               )
